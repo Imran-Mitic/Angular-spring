@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NotesComponent } from './notes/notes.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [NotesComponent],  
+  template: '<app-notes></app-notes>',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'note';
+  title = 'Gestion des Notes';
 }

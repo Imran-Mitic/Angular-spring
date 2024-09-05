@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>Gestion des Notes</h2>
+  
+    <button (click)="showForm = true" class="les">Ajouter Note</button>
+  
+    <div *ngIf="showForm">
+      <form (submit)="addOrUpdateNote()">
+        <label for="nom">Nom :</label>
+        <input id="nom" [(ngModel)]="newNote.nom" name="nom" required />
+  
+        <label for="prenom">Prénom :</label>
+        <input id="prenom" [(ngModel)]="newNote.prenom" name="prenom" required />
+  
+        <label for="matiere">Matière :</label>
+        <input id="matiere" [(ngModel)]="newNote.matiere" name="matiere" required />
+  
+        <label for="classe">Classe :</label>
+        <input id="classe" [(ngModel)]="newNote.classe" name="classe" required />
+  
+        <label for="note">Note :</label>
+        <input id="note" [(ngModel)]="newNote.note" name="note" required />
+  
+        <button type="submit">{{ editingNote ? 'Sauvegarder' : 'Ajouter Note' }}</button>
+        <button type="button" (click)="cancelEdit()">Annuler</button>
+      </form>
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Matière</th>
+          <th>Classe</th>
+          <th>Note</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of notes">
+          <td>{{ note.id }}</td>
+          <td>{{ note.nom }}</td>
+          <td>{{ note.prenom }}</td>
+          <td>{{ note.matiere }}</td>
+          <td>{{ note.classe }}</td>
+          <td>{{ note.note }}</td>
+          <td>
+            <button class="edit-button" (click)="editNote(note)">Modifier</button>
+            <button class="delete-button" (click)="deleteNote(note.id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
